@@ -6,5 +6,6 @@ import { MenuRepository } from './menu.repository';
 @Module({
   controllers: [MenuController],
   providers: [MenuService, MenuRepository],
+  exports: [MenuService, MenuRepository],
 })
 export class MenuModule {}
