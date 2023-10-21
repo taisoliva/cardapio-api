@@ -26,38 +26,29 @@ export class ProductsService {
   }
 
   async findOne(id: string) {
-    if (this.verifyLengthOfID(id))
-      throw new InternalServerErrorException('ID incorrect');
-    return await this.productRepository.findOne(id);
-  }
-
-  async update(id: string, updateProductDto: UpdateProductDto) {
-    if (this.verifyLengthOfID(id))
-      throw new InternalServerErrorException('ID incorrect');
+    this.verifyLengthOfID(id);
     const result = await this.productRepository.findOne(id);
-
     if (!result) {
       throw new ProductNotFoundException(id);
     }
+    return result;
+  }
 
+  async update(id: string, updateProductDto: UpdateProductDto) {
+    this.verifyLengthOfID(id);
+    await this.findOne(id);
     return this.productRepository.update(id, updateProductDto);
   }
 
   async remove(id: string) {
-    if (this.verifyLengthOfID(id))
-      throw new InternalServerErrorException('ID incorrect');
-    const result = await this.productRepository.findOne(id);
-
-    if (!result) {
-      throw new ProductNotFoundException(id);
-    }
+    this.verifyLengthOfID(id);
+    await this.findOne(id);
     return this.productRepository.remove(id);
   }
 
   verifyLengthOfID(id: string) {
-    if (id.length < 24) {
-      return true;
+    if (id.length !== 24) {
+      throw new InternalServerErrorException('ID incorrect');
     }
-    return false;
   }
 }
