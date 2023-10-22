@@ -21,10 +21,6 @@ export class ProductsRepository {
   async findOne(id: string) {
     return await this.prisma.products.findFirst({
       where: { id },
-      include: {
-        categories: true,
-        menus: true,
-      },
     });
   }
 

@@ -5,14 +5,17 @@ export class CreateProductDto {
   @IsNotEmpty()
   name: string;
 
+  @IsNotEmpty()
   @IsInt()
   price: number;
 
   @IsUrl()
   @IsString()
+  @IsNotEmpty()
   image: string;
 
   @IsString()
+  @IsNotEmpty()
   description: string;
 
   @IsString()
@@ -20,5 +23,6 @@ export class CreateProductDto {
   menuId: string;
 
   @IsString()
+  @Length(24, 24)
   categoryId: string;
 }

@@ -37,6 +37,7 @@ export class ProductsService {
   async update(id: string, updateProductDto: UpdateProductDto) {
     this.verifyLengthOfID(id);
     await this.findOne(id);
+    await this.verifyMenuIdAndCategoryId(updateProductDto);
     return this.productRepository.update(id, updateProductDto);
   }
 
@@ -49,6 +50,15 @@ export class ProductsService {
   verifyLengthOfID(id: string) {
     if (id.length !== 24) {
       throw new InternalServerErrorException('ID incorrect');
+    }
+  }
+
+  async verifyMenuIdAndCategoryId(updateProductDto: UpdateProductDto) {
+    if ('menuId' in updateProductDto) {
+      await this.menuService.findOne(updateProductDto.menuId);
+    }
+    if ('categoryId' in updateProductDto) {
+      await this.categoryService.findOne(updateProductDto.categoryId);
     }
   }
 }
