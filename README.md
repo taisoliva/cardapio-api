@@ -6,9 +6,11 @@ Esta é uma aplicação em que você cria produtos, categoria e cardápios. De a
 
 1. Clone este repositório pelo seguinte <a href="https://github.com/taisoliva/cardapio-api.git"> link </a>
 2.  Instale todas as dependências 
-```npm i ```
-3. Crie um arquivo .env na raiz do seu projeto
-4. Configure o arquivo .env de acordo com o .env.example
+```bash
+    npm i
+```
+4. Crie um arquivo .env na raiz do seu projeto
+5. Configure o arquivo .env de acordo com o .env.example
 ``` MONGODB_USERNAME=tais15oliva
     MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
     MONGODB_NAME=cardapio
