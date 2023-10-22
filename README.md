@@ -68,8 +68,10 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 npm run test:prisma
 ```
 6. Rode os testes unitários
-```npm run test```
-7. Rode a cobertura de testes unitários
+```
+npm run test
+```
+8. Rode a cobertura de testes unitários
 ```
 npm run test:cov
 ```
