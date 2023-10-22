@@ -1,21 +1,26 @@
 import { PrismaClient } from '@prisma/client';
-import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.menus.create({
-    data: {
-      name: faker.company.name(),
-      type: 'diurno',
-    },
-  });
+  const menu = await prisma.menus.findFirst();
+  const category = await prisma.categories.findFirst();
+  if (!menu) {
+    await prisma.menus.create({
+      data: {
+        name: 'Hora do Lanche',
+        type: 'diurno',
+      },
+    });
+  }
 
-  await prisma.categories.create({
-    data: {
-      name: faker.commerce.product(),
-    },
-  });
+  if (!category) {
+    await prisma.categories.create({
+      data: {
+        name: 'Salgado',
+      },
+    });
+  }
 }
 
 main();

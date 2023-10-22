@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "prisma": {
-    "seed": "dotenv -e .env -- ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
     "build": "nest build",
@@ -23,7 +23,9 @@
     "test:load-envs": "dotenv -e .env.test",
     "test:prisma": "npm run test:load-envs prisma generate",
     "test:e2e-seed": "dotenv -e .env -- ts-node prisma/seed.ts",
-    "test:e2e": "npm run test:load-envs -- jest -- --runInBand --config ./test/jest-e2e.json"
+    "test:e2e": "npm run test:load-envs -- jest -- --runInBand --config ./test/jest-e2e.json",
+    "prisma:prod":"npx prisma generate",
+    "prisma:prod:seed":"npx prisma db seed"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
