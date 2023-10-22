@@ -20,9 +20,9 @@ Esta é uma aplicação em que você cria produtos, categoria e cardápios. De a
 4. Crie um arquivo .env na raiz do seu projeto
 5. Configure o arquivo .env de acordo com o .env.example
 ```
-    MONGODB_USERNAME=tais15oliva
-    MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
-    MONGODB_NAME=cardapio
+MONGODB_USERNAME=tais15oliva
+MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
+MONGODB_NAME=cardapio
       DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
 ```
 5. Inicialize o banco de dados com o Prisma
@@ -60,3 +60,11 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 ```npm run test:cov```
 8. Rode os testes de integração (e2e)
 ```npm run test:e2e```
+
+# Rotas da aplicação
+
+<details>
+  <summary>:zap: Most Used Languages</summary>
+  <img height="172em" alt="Tais's GitHub Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=taisoliva&layout=compact&langs_count=10&theme=rose_pine&bg_color"/>
+</details>
+
