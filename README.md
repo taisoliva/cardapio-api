@@ -64,22 +64,25 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 # Rotas da aplicação
 
 <details>
-  <summary>:zap: /menu </summary>
-  <details> 
-  <summary>:zap: POST </summary>
-   ```
-   body = {
+  <summary>/menu</summary>
 
-   }
-   ```
-  </details>
+  Você pode usar os seguintes métodos HTTP para interagir com este projeto:
+
+  - **GET: /menu** Use o método GET para recuperar informações de menus.
+  - **GET: /menu/menuID** Use o método GET para recuperar informações de um menu específico.
+  - **POST: /menu** Use o método POST para criar novos recursos no projeto. Necessário passar o seguinte body
+    ```
+    body = {
+      name: "Nome do seu Menu",
+      type: "diurno" | "noturno"
+    }
+    ```
+  - **PATCH: /menu/menuId** Use o método PATCH para atualizar parcialmente algum menu. Necessário passar no body o que se deseja atualizar:
+    ```
+    body = {
+      name: "Nome do seu novo Menu",
+    }
+    ```
+  - **DELETE: /menu/menuId** Use o método DELETE para excluir um menu específico
+
 </details>
-
-<details>
-  <summary>:zap: /category </summary>
-</details>
-
-<details>
-  <summary>:zap: /products </summary>
-</details>
-
