@@ -64,7 +64,22 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 # Rotas da aplicação
 
 <details>
-  <summary>:zap: Most Used Languages</summary>
-  <img height="172em" alt="Tais's GitHub Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=taisoliva&layout=compact&langs_count=10&theme=rose_pine&bg_color"/>
+  <summary>:zap: /menu </summary>
+  <details> 
+  <summary>:zap: POST </summary>
+   ```
+   body = {
+
+   }
+   ```
+  </details>
+</details>
+
+<details>
+  <summary>:zap: /category </summary>
+</details>
+
+<details>
+  <summary>:zap: /products </summary>
 </details>
 
