@@ -20,6 +20,20 @@ describe('ProductsServices', () => {
     repository = module.get<MenuRepository>(MenuRepository);
   });
 
+  it('should create a new menu', async () => {
+    const mockMenu = {
+      id: faker.database.mongodbObjectId(),
+      name: faker.commerce.productName(),
+      type: 'diurno',
+    };
+
+    jest.spyOn(repository, 'create').mockImplementationOnce(() => {
+      return Promise.resolve(mockMenu);
+    });
+    const promise = await service.create(mockMenu);
+    expect(promise).toEqual(mockMenu);
+  });
+
   it('should return an error if menuId does not exists ', () => {
     const menuId = faker.database.mongodbObjectId();
     jest.spyOn(repository, 'findOne').mockReturnValue(null);
