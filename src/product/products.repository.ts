@@ -15,12 +15,7 @@ export class ProductsRepository {
   }
 
   async findAll(): Promise<Products[]> {
-    return await this.prisma.products.findMany({
-      include: {
-        categories: true,
-        menus: true,
-      },
-    });
+    return await this.prisma.products.findMany();
   }
 
   async findOne(id: string) {

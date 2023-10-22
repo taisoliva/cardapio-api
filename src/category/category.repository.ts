@@ -14,7 +14,9 @@ export class CategoryRepository {
   }
 
   async findAll() {
-    return await this.prisma.categories.findMany();
+    return await this.prisma.categories.findMany({
+      include: { products: true },
+    });
   }
 
   async findOne(id: string) {

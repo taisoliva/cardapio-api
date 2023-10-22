@@ -16,6 +16,9 @@ export class MenuRepository {
   async findAll(type: string) {
     return await this.prisma.menus.findMany({
       where: { type },
+      include: {
+        products: true,
+      },
     });
   }
 
