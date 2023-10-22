@@ -2,12 +2,20 @@
 
 Esta é uma aplicação em que você cria produtos, categoria e cardápios. De acordo com o horário você obtém um cardápio específico. 
 
+- Banco de Dados: MongoDB
+- Modelagem de dados
+- PrismaORM
+- Orientação a Objeto com NestJs
+- Typescript
+- Testes automatizados de integração com Jest
+- Testes unitários 
+
 # Como rodar essa aplicação
 
 1. Clone este repositório pelo seguinte <a href="https://github.com/taisoliva/cardapio-api.git"> link </a>
 2.  Instale todas as dependências 
-```bash
-    npm i
+```
+ npm i
 ```
 4. Crie um arquivo .env na raiz do seu projeto
 5. Configure o arquivo .env de acordo com o .env.example
