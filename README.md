@@ -59,9 +59,13 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 6. Rode os testes unitários
 ```npm run test```
 7. Rode a cobertura de testes unitários
-```npm run test:cov```
-8. Rode os testes de integração (e2e)
-```npm run test:e2e```
+```
+npm run test:cov
+```
+9. Rode os testes de integração (e2e)
+```
+npm run test:e2e
+```
 
 # Rotas da aplicação
 
@@ -160,7 +164,7 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
 </details>
 
 <details>
-  <summary>/product</summary>
+  <summary>/products</summary>
 
   Você pode usar os seguintes métodos HTTP para interagir com este projeto:
 
