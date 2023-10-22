@@ -105,10 +105,99 @@ DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawz
   - **PATCH: /menu/menuId** Use o método PATCH para atualizar parcialmente algum menu. Necessário passar no body o que se deseja atualizar:
     ```
     body = {
-      name: "Nome do seu novo Menu",
+      name: "Nome do Menu Atualizado",
     }
     ```
  
   - **DELETE: /menu/menuId** Use o método DELETE para excluir um menu específico
+
+</details>
+
+<details>
+  <summary>/category</summary>
+
+  Você pode usar os seguintes métodos HTTP para interagir com este projeto:
+
+  - **GET: /category** Use o método GET para recuperar informações das categorias. Exemplo de retorno
+    ```
+     [
+       {
+        "id": "6532f9601ffffd75e088d385",
+        "name": "Doce",
+        "products": [
+            {
+                "id": "65332fae38310a4e610a1f38",
+                "name": "Bolo de Cenoura!!",
+                "price": 1200,
+                "image": "https://assets.unileversolutions.com/recipes-v2/67405.jpg",
+                "description": "Bolo feito com cenouras recém colhidas e uma deliciosa cobertura de chocolate",
+                "menuId": "6532f95f1ffffd75e088d384",
+                "categoryId": "6532f9601ffffd75e088d385"
+            }
+        ]
+      }
+    ]
+    ```
+  - **GET: /category/categoryID** Use o método GET para recuperar informações de uma categoria específica.
+ 
+  
+  - **POST: /category** Use o método POST para criar novos recursos no projeto. Necessário passar o seguinte body
+    ```
+    body = {
+      name: "Nome da Categoria",
+    }
+    ```
+ 
+  - **PATCH: /category/categoryID** Use o método PATCH para atualizar parcialmente alguma categoria. Necessário passar no body o que se deseja atualizar:
+    ```
+    body = {
+      name: "Nome da Categoria Atualizada",
+    }
+    ```
+ 
+  - **DELETE: /category/categoryID** Use o método DELETE para excluir uma categoria específica
+
+</details>
+
+<details>
+  <summary>/product</summary>
+
+  Você pode usar os seguintes métodos HTTP para interagir com este projeto:
+
+  - **GET: /products** Use o método GET para recuperar informações dos produtos. Exemplo de retorno
+    ```
+     [
+      {
+        "id": "65332fae38310a4e610a1f38",
+        "name": "Bolo de Cenoura!!",
+        "price": 1200,
+        "image": "https://assets.unileversolutions.com/recipes-v2/67405.jpg",
+        "description": "Bolo feito com cenouras recém colhidas e uma deliciosa cobertura de chocolate",
+        "menuId": "6532f95f1ffffd75e088d384",
+        "categoryId": "6532f9601ffffd75e088d385"
+     }
+    ]
+    ```
+  - **GET: /products/productID** Use o método GET para recuperar informações de um produto específico.
+ 
+  
+  - **POST: /products** Use o método POST para criar novos recursos no projeto. Necessário passar o seguinte body
+    ```
+    body = {
+      name: "Nome do Produto",
+      price: 1120,
+      imagem: URL da Imagem,
+      description: descrição breve do produto 
+    }
+    ```
+ 
+  - **PATCH: /products/productID** Use o método PATCH para atualizar parcialmente algum produto. Necessário passar no body o que se deseja atualizar:
+    ```
+    body = {
+      name: "Nome da Produto Atualizado",
+    }
+    ```
+ 
+  - **DELETE: /products/productID** Use o método DELETE para excluir um produto específico.
 
 </details>
