@@ -6,6 +6,7 @@ import { CategoryService } from './category.service';
 import { CategoryRepository } from './category.repository';
 import { CategoryNotFoundException } from 'src/exceptions/category-not-found.exception';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { Categories } from '@prisma/client';
 
 describe('ProductsServices', () => {
   let service: CategoryService;
@@ -18,6 +19,36 @@ describe('ProductsServices', () => {
 
     service = module.get<CategoryService>(CategoryService);
     repository = module.get<CategoryRepository>(CategoryRepository);
+  });
+
+  it('should return a new category', async () => {
+    const mockCategory = {
+      id: faker.database.mongodbObjectId(),
+      name: faker.commerce.productName(),
+    };
+
+    jest
+      .spyOn(repository, 'create')
+      .mockImplementationOnce((): Promise<Categories> => {
+        return Promise.resolve(mockCategory);
+      });
+
+    const promise = await service.create({ name: mockCategory.name });
+    expect(promise).toEqual(mockCategory);
+  });
+
+  it('should return a category', async () => {
+    const mockCategory = {
+      id: faker.database.mongodbObjectId(),
+      name: faker.commerce.productName(),
+    };
+
+    jest.spyOn(repository, 'findAll').mockImplementationOnce((): any => {
+      return Promise.resolve([mockCategory]);
+    });
+
+    const promise = await service.findAll();
+    expect(promise).toContain(mockCategory);
   });
 
   it('should return an error if categoryId does not exists ', () => {
