@@ -1,4 +1,6 @@
-# SOBRE 
+# Cardapio-API 
+
+## SOBRE 
 
 Esta é uma aplicação em que você cria produtos, categoria e cardápios. De acordo com o horário você obtém um cardápio específico. 
 
@@ -8,9 +10,21 @@ Esta é uma aplicação em que você cria produtos, categoria e cardápios. De a
 - Orientação a Objeto com NestJs
 - Typescript
 - Testes automatizados de integração com Jest
-- Testes unitários 
+- Testes unitários
 
-# Como rodar essa aplicação
+## Tecnologias
+
+<p>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" />
+  <img src="https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+</p>
+O prisma foi utilizado para a criação do banco de dados e também para monitorar as migrações e as alterações realizadas. O Jest foi utilizado juntamente com a biblioteca <a href="https://fakerjs.dev/api/"> faker </a> para realizar os testes. 
+
+## Como rodar essa aplicação
 
 1. Clone este repositório pelo seguinte <a href="https://github.com/taisoliva/cardapio-api.git"> link </a>
 2.  Instale todas as dependências 
@@ -36,7 +50,7 @@ npx prisma generate
 npm run start:dev
 ```
 
-# Como rodar os testes da Aplicação
+## Como rodar os testes da Aplicação
 
 1. Clone este repositório pelo seguinte <a href="https://github.com/taisoliva/cardapio-api.git"> link </a>
 2.  Instale todas as dependências 
@@ -67,7 +81,7 @@ npm run test:cov
 npm run test:e2e
 ```
 
-# Rotas da aplicação
+## Rotas da aplicação
 
 <details>
   <summary>/menu</summary>
