@@ -37,8 +37,7 @@ O prisma foi utilizado para a criação do banco de dados e também para monitor
 MONGODB_USERNAME=tais15oliva
 MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
 MONGODB_NAME=cardapio
-
-      DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
+DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
 
 ```
 5. Inicialize o banco de dados com o Prisma
@@ -61,15 +60,13 @@ npm run start:dev
 MONGODB_USERNAME=tais15oliva
 MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
 MONGODB_NAME=cardapio-test
-
-
 DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
 
 ```
 5. Inicialize o banco de dados para os testes com o Prisma
-   ```
-   npm run test:prisma
-   ```
+```
+npm run test:prisma
+```
 6. Rode os testes unitários
 ```npm run test```
 7. Rode a cobertura de testes unitários
