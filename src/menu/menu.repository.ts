@@ -25,6 +25,9 @@ export class MenuRepository {
   async findOne(id: string) {
     return await this.prisma.menus.findFirst({
       where: { id },
+      include: {
+        products: true,
+      },
     });
   }
 
