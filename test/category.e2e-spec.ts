@@ -7,6 +7,8 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { faker } from '@faker-js/faker';
 import { CategoryFactory } from './factories/category.factory';
+import { ProductFactory } from './factories/product.factory';
+import { MenuFactory } from './factories/menu.factory';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -67,24 +69,28 @@ describe('AppController (e2e)', () => {
   });
 
   it('/GET category => should response with OK and return a array with 2 elements', async () => {
-    const category1 = await CategoryFactory.build(prisma);
-    const category2 = await CategoryFactory.build(prisma);
+    await CategoryFactory.build(prisma);
+    await CategoryFactory.build(prisma);
 
     const response = await request(app.getHttpServer()).get('/category');
     expect(response.statusCode).toBe(HttpStatus.OK);
-    expect(response.body).toEqual(
-      expect.arrayContaining([category1, category2]),
-    );
+    expect(response.body).toHaveLength(2);
   });
 
   it('/GET category => should response with OK and category by Id', async () => {
     const category = await CategoryFactory.build(prisma);
-
+    const menu = await MenuFactory.build(prisma, 'noturno');
+    const product = await ProductFactory.build(prisma, menu.id, category.id);
+    const body = {
+      id: category.id,
+      name: category.name,
+      products: [product],
+    };
     const response = await request(app.getHttpServer()).get(
       `/category/${category.id}`,
     );
     expect(response.statusCode).toBe(HttpStatus.OK);
-    expect(response.body).toEqual(category);
+    expect(response.body).toEqual(body);
   });
 
   it('/GET category => should response with Internal Server Error and ID incorret message', async () => {

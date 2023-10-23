@@ -1,8 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { CategoryRepository } from './category.repository';
 import { CategoryNotFoundException } from 'src/exceptions/category-not-found.exception';
+import verifyLengthOfID from 'src/utils/verify-length-id';
 
 @Injectable()
 export class CategoryService {
@@ -17,7 +18,7 @@ export class CategoryService {
   }
 
   async findOne(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     const result = await this.categoryRepository.findOne(id);
     if (!result) {
       throw new CategoryNotFoundException(id);
@@ -26,20 +27,14 @@ export class CategoryService {
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     return await this.categoryRepository.update(id, updateCategoryDto);
   }
 
   async remove(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     return await this.categoryRepository.remove(id);
-  }
-
-  verifyLengthOfID(id: string) {
-    if (id.length !== 24) {
-      throw new InternalServerErrorException('ID incorrect');
-    }
   }
 }

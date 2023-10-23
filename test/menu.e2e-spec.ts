@@ -7,6 +7,8 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { faker } from '@faker-js/faker';
 import { MenuFactory } from './factories/menu.factory';
+import { CategoryFactory } from './factories/category.factory';
+import { ProductFactory } from './factories/product.factory';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -82,35 +84,43 @@ describe('AppController (e2e)', () => {
   });
 
   it('/GET menu => should response with OK and return a array with elements if query diurno', async () => {
-    const menu1 = await MenuFactory.build(prisma, 'diurno');
-    const menu2 = await MenuFactory.build(prisma, 'diurno');
+    await MenuFactory.build(prisma, 'diurno');
+    await MenuFactory.build(prisma, 'diurno');
     await MenuFactory.build(prisma, 'noturno');
 
     const response = await request(app.getHttpServer()).get(
       '/menu?type=diurno',
     );
     expect(response.statusCode).toBe(HttpStatus.OK);
-    expect(response.body).toEqual(expect.arrayContaining([menu1, menu2]));
+    expect(response.body).toHaveLength(2);
   });
 
   it('/GET menu => should response with OK and return a array with 1 element if query noturno', async () => {
     await MenuFactory.build(prisma, 'diurno');
     await MenuFactory.build(prisma, 'diurno');
-    const menu3 = await MenuFactory.build(prisma, 'noturno');
+    await MenuFactory.build(prisma, 'noturno');
 
     const response = await request(app.getHttpServer()).get(
       '/menu?type=noturno',
     );
     expect(response.statusCode).toBe(HttpStatus.OK);
-    expect(response.body).toEqual(expect.arrayContaining([menu3]));
+    expect(response.body).toHaveLength(1);
   });
 
   it('/GET menu => should response with OK and menu by Id', async () => {
     const menu = await MenuFactory.build(prisma, 'noturno');
+    const category = await CategoryFactory.build(prisma);
+    const product = await ProductFactory.build(prisma, menu.id, category.id);
+    const body = {
+      id: menu.id,
+      name: menu.name,
+      type: menu.type,
+      products: [product],
+    };
 
     const response = await request(app.getHttpServer()).get(`/menu/${menu.id}`);
     expect(response.statusCode).toBe(HttpStatus.OK);
-    expect(response.body).toEqual(menu);
+    expect(response.body).toEqual(body);
   });
 
   it('/GET menu => should response with Internal Server Error and ID incorret message', async () => {

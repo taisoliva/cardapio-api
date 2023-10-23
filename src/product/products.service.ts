@@ -1,10 +1,11 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductsRepository } from './products.repository';
 import { MenuService } from 'src/menu/menu.service';
 import { CategoryService } from 'src/category/category.service';
 import { ProductNotFoundException } from 'src/exceptions/product-not-found.exception';
+import verifyLengthOfID from 'src/utils/verify-length-id';
 
 @Injectable()
 export class ProductsService {
@@ -26,7 +27,7 @@ export class ProductsService {
   }
 
   async findOne(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     const result = await this.productRepository.findOne(id);
     if (!result) {
       throw new ProductNotFoundException(id);
@@ -35,22 +36,16 @@ export class ProductsService {
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     await this.verifyMenuIdAndCategoryId(updateProductDto);
     return this.productRepository.update(id, updateProductDto);
   }
 
   async remove(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     return this.productRepository.remove(id);
-  }
-
-  verifyLengthOfID(id: string) {
-    if (id.length !== 24) {
-      throw new InternalServerErrorException('ID incorrect');
-    }
   }
 
   async verifyMenuIdAndCategoryId(updateProductDto: UpdateProductDto) {
