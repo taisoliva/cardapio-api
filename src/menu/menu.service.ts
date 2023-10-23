@@ -1,8 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { MenuRepository } from './menu.repository';
 import { MenuNotFoundException } from '../exceptions/menu-not-found.exception';
+import verifyLengthOfID from 'src/utils/verify-length-id';
 
 @Injectable()
 export class MenuService {
@@ -17,7 +18,7 @@ export class MenuService {
   }
 
   async findOne(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     const result = await this.menuRepository.findOne(id);
     if (!result) {
       throw new MenuNotFoundException(id);
@@ -26,20 +27,14 @@ export class MenuService {
   }
 
   async update(id: string, updateMenuDto: UpdateMenuDto) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     return await this.menuRepository.update(id, updateMenuDto);
   }
 
   async remove(id: string) {
-    this.verifyLengthOfID(id);
+    verifyLengthOfID(id);
     await this.findOne(id);
     return await this.menuRepository.remove(id);
-  }
-
-  verifyLengthOfID(id: string) {
-    if (id.length !== 24) {
-      throw new InternalServerErrorException('ID incorrect');
-    }
   }
 }

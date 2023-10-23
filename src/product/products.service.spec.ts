@@ -7,7 +7,7 @@ import { ProductNotFoundException } from 'src/exceptions/product-not-found.excep
 import { InternalServerErrorException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { CategoryService } from 'src/category/category.service';
-import { Categories, Menus, Products } from '@prisma/client';
+import { Products } from '@prisma/client';
 import { MenuNotFoundException } from 'src/exceptions/menu-not-found.exception';
 import { MenuService } from 'src/menu/menu.service';
 import { CategoryNotFoundException } from 'src/exceptions/category-not-found.exception';
@@ -46,11 +46,9 @@ describe('ProductsServices', () => {
       categoryId: mockCategory.id,
     };
 
-    jest
-      .spyOn(serviceCategory, 'findOne')
-      .mockImplementationOnce((): Promise<Categories> => {
-        return Promise.resolve(mockCategory);
-      });
+    jest.spyOn(serviceCategory, 'findOne').mockImplementationOnce((): any => {
+      return Promise.resolve(mockCategory);
+    });
 
     const promise = service.create(mockProduct);
     expect(promise).rejects.toThrow(
@@ -74,11 +72,9 @@ describe('ProductsServices', () => {
       categoryId: faker.database.mongodbObjectId(),
     };
 
-    jest
-      .spyOn(serviceMenu, 'findOne')
-      .mockImplementationOnce((): Promise<Menus> => {
-        return Promise.resolve(mockMenu);
-      });
+    jest.spyOn(serviceMenu, 'findOne').mockImplementationOnce((): any => {
+      return Promise.resolve(mockMenu);
+    });
 
     const promise = service.create(mockProduct);
     expect(promise).rejects.toThrow(
