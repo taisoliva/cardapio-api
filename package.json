@@ -24,8 +24,8 @@
     "test:prisma": "npm run test:load-envs prisma generate",
     "test:e2e-seed": "dotenv -e .env -- ts-node prisma/seed.ts",
     "test:e2e": "npm run test:load-envs -- jest -- --runInBand --config ./test/jest-e2e.json",
-    "prisma:prod":"npx prisma generate",
-    "prisma:prod:seed":"npx prisma db seed "
+    "prisma:prod": "npx prisma generate",
+    "prisma:prod:seed": "npx prisma db seed "
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -45,6 +45,7 @@
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@types/cors": "^2.8.15",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
@@ -75,7 +76,7 @@
     "testRegex": ".*\\.spec\\.ts$",
     "moduleNameMapper": {
       "^src/(.*)": "<rootDir>/../src/$1",
-      "^@/(.*)":"<rootDir>/../src/$1"
+      "^@/(.*)": "<rootDir>/../src/$1"
     },
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
