@@ -31,8 +31,8 @@ O prisma foi utilizado para a criação do banco de dados e também para monitor
 ```
  npm i
 ```
-4. Crie um arquivo .env na raiz do seu projeto
-5. Configure o arquivo .env de acordo com o .env.example
+3. Crie um arquivo .env na raiz do seu projeto
+4. Configure o arquivo .env de acordo com o .env.example
 ```
 MONGODB_USERNAME=seu-user
 MONGODB_PASSWORD=sua-senha
@@ -71,11 +71,11 @@ npm run test:prisma
 ```
 npm run test
 ```
-8. Rode a cobertura de testes unitários
+7. Rode a cobertura de testes unitários
 ```
 npm run test:cov
 ```
-9. Rode os testes de integração (e2e)
+8. Rode os testes de integração (e2e)
 ```
 npm run test:e2e
 ```
