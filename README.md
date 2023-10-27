@@ -83,6 +83,11 @@ npm run test:e2e
 ## Rotas da aplicação
 
 <details>
+  <summary>/health</summary>
+    Você pode testar se a aplicação está OK. Retorno é 'I'm Ok'
+</details>
+
+<details>
   <summary>/menu</summary>
 
   Você pode usar os seguintes métodos HTTP para interagir com este projeto:
