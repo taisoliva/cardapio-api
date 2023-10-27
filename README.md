@@ -34,9 +34,9 @@ O prisma foi utilizado para a criação do banco de dados e também para monitor
 4. Crie um arquivo .env na raiz do seu projeto
 5. Configure o arquivo .env de acordo com o .env.example
 ```
-MONGODB_USERNAME=tais15oliva
-MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
-MONGODB_NAME=cardapio
+MONGODB_USERNAME=seu-user
+MONGODB_PASSWORD=sua-senha
+MONGODB_NAME=nome-do-banco
 DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
 
 ```
@@ -57,9 +57,9 @@ npm run start:dev
 3. Crie um arquivo .env.test na raiz do projeto
 4. Configure o arquivo .env.test de acordo com o .env.example
 ```
-MONGODB_USERNAME=tais15oliva
-MONGODB_PASSWORD=CBGG2DvKeKcv4FMO
-MONGODB_NAME=cardapio-test
+MONGODB_USERNAME=seu-user
+MONGODB_PASSWORD=sua-senha
+MONGODB_NAME=nome-do-banco
 DATABASE_URL=mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.tawzcp8.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority
 
 ```
