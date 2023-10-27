@@ -204,7 +204,9 @@ npm run test:e2e
       name: "Nome do Produto",
       price: 1120,
       imagem: URL da Imagem,
-      description: descrição breve do produto 
+      description: descrição breve do produto,
+      menuId: menu_id,
+      categoryId: category_id 
     }
     ```
  
