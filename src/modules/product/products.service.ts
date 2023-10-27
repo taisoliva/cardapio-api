@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductsRepository } from './products.repository';
-import { MenuService } from 'src/menu/menu.service';
-import { CategoryService } from 'src/category/category.service';
+import { MenuService } from 'src/modules/menu/menu.service';
+import { CategoryService } from 'src/modules/category/category.service';
 import { ProductNotFoundException } from 'src/exceptions/product-not-found.exception';
 import verifyLengthOfID from 'src/utils/verify-length-id';
 

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { MenuRepository } from './menu.repository';
-import { MenuNotFoundException } from '../exceptions/menu-not-found.exception';
+import { MenuNotFoundException } from '../../exceptions/menu-not-found.exception';
 import verifyLengthOfID from 'src/utils/verify-length-id';
 
 @Injectable()

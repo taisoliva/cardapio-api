@@ -6,10 +6,10 @@ import { faker } from '@faker-js/faker';
 import { ProductNotFoundException } from 'src/exceptions/product-not-found.exception';
 import { InternalServerErrorException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { CategoryService } from 'src/category/category.service';
+import { CategoryService } from 'src/modules/category/category.service';
 import { Products } from '@prisma/client';
 import { MenuNotFoundException } from 'src/exceptions/menu-not-found.exception';
-import { MenuService } from 'src/menu/menu.service';
+import { MenuService } from 'src/modules/menu/menu.service';
 import { CategoryNotFoundException } from 'src/exceptions/category-not-found.exception';
 
 describe('ProductsServices', () => {

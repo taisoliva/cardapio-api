@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'src/modules/prisma/prisma.service';
 
 export class ProductFactory {
   static async build(

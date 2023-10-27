@@ -3,8 +3,8 @@ import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { E2EUtils } from './utils/e2e-utils';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { PrismaModule } from 'src/prisma/prisma.module';
+import { PrismaService } from 'src/modules/prisma/prisma.service';
+import { PrismaModule } from 'src/modules/prisma/prisma.module';
 import { faker } from '@faker-js/faker';
 import { CategoryFactory } from './factories/category.factory';
 import { ProductFactory } from './factories/product.factory';
@@ -99,7 +99,7 @@ describe('AppController (e2e)', () => {
     const response = await request(app.getHttpServer()).get(
       `/category/3123712739128739182739273912739792173912739279317293`,
     );
-    expect(response.statusCode).toBe(HttpStatus.INTERNAL_SERVER_ERROR);
+    expect(response.statusCode).toBe(HttpStatus.BAD_REQUEST);
     expect(response.body.message).toEqual('ID incorrect');
   });
 

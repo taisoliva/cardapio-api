@@ -3,8 +3,8 @@ import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { E2EUtils } from './utils/e2e-utils';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { PrismaModule } from 'src/prisma/prisma.module';
+import { PrismaService } from 'src/modules/prisma/prisma.service';
+import { PrismaModule } from 'src/modules/prisma/prisma.module';
 import { faker } from '@faker-js/faker';
 import { CategoryFactory } from './factories/category.factory';
 import { MenuFactory } from './factories/menu.factory';
@@ -40,6 +40,26 @@ describe('AppController (e2e)', () => {
       .send({});
     expect(response.body.statusCode).toBe(HttpStatus.BAD_REQUEST);
     expect(response.body.message).toContain('name should not be empty');
+  });
+
+  it('/POST products => should return BAD REQUEST if price is negative', async () => {
+    const menu = await MenuFactory.build(prisma, 'diurno');
+    const category = await CategoryFactory.build(prisma);
+
+    const body = {
+      name: faker.commerce.product(),
+      price: -1,
+      image: faker.image.url(),
+      description: faker.commerce.productDescription(),
+      menuId: menu.id,
+      categoryId: category.id,
+    };
+
+    const response = await request(app.getHttpServer())
+      .post('/products')
+      .send(body);
+    expect(response.body.statusCode).toBe(HttpStatus.BAD_REQUEST);
+    expect(response.body.message).toContain('price must not be less than 1');
   });
 
   it('/POST products => should return BAD REQUEST if menuId is not 24 characters', async () => {
